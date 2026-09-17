@@ -75,8 +75,9 @@ export async function wireBooking() {
         : t('Wybierz inny dzień.', 'Please choose another day.'),
     )
     updateVisit()
+    summary.hidden = slots.length > 0
     summary.textContent = slots.length
-      ? t('Wybierz godzinę rozpoczęcia wizyty.', 'Choose your arrival time.')
+      ? ''
       : t(
           'Brak godzin w tym dniu. Wybierz inny dzień.',
           'No times on this day. Please choose another day.',
@@ -153,8 +154,8 @@ export async function wireBooking() {
       const result = await response.json()
       if (!response.ok) throw new Error(result.error ?? 'unavailable')
       status.textContent = t(
-        'Dziękujemy! Zgłoszenie zapisane. Stolik będzie zarezerwowany po kontakcie i potwierdzeniu przez obsługę.',
-        'Thank you! Your request is saved. Your table is reserved only after our team contacts you to confirm.',
+        'Dziękujemy! Odezwiemy się w sprawie rezerwacji.',
+        'Thank you! We’ll be in touch about your booking.',
       )
       const done = document.createElement('div')
       done.className = 'booking-success'

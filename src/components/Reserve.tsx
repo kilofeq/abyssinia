@@ -85,11 +85,6 @@ export function Reserve({ copy }: { copy: Copy }) {
                       type="date"
                       required
                     />
-                    <p className="booking-help">
-                      {copy.locale === 'pl'
-                        ? 'Godziny według czasu w Krakowie. W poniedziałki odpoczywamy.'
-                        : 'All times are local to Kraków. Closed on Mondays.'}
-                    </p>
                   </div>
                   <div className="sm:col-span-2">
                     <label className={labelClass} htmlFor="rs-time">

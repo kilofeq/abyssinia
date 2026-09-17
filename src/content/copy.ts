@@ -144,7 +144,7 @@ export const pl: Copy = {
   reserve: {
     eyebrow: 'Rezerwacja',
     title: 'Zarezerwuj stolik',
-    lead: 'Wybierz dzień, godzinę i liczbę osób. Odezwiemy się, żeby potwierdzić Twój stolik.',
+    lead: 'Wypełnij formularz lub zadzwoń.',
     callTitle: 'Telefon',
     groupNote: 'Grupy od {n} osób prosimy o telefon.',
     formTitle: 'Zaplanuj wizytę',
@@ -159,8 +159,8 @@ export const pl: Copy = {
     notes: 'Uwagi',
     notesPlaceholder: 'Alergie, okazja, wózek…',
     submit: 'Wyślij prośbę o rezerwację',
-    disclaimer: 'To prośba o stolik, nie potwierdzona rezerwacja. Odezwiemy się, żeby ją potwierdzić.',
-    noscript: 'Formularz potrzebuje JavaScriptu. Bez niego zadzwoń albo napisz na adres poniżej.',
+    disclaimer: 'Poczekaj na potwierdzenie rezerwacji.',
+    noscript: 'Aby zarezerwować stolik, zadzwoń lub napisz do nas.',
     providerCta: 'Rezerwuj online',
   },
   footer: {
@@ -237,7 +237,7 @@ export const en: Copy = {
   reserve: {
     eyebrow: 'Reservations',
     title: 'Book a table',
-    lead: 'Choose a day, time and party size. We’ll get back to you to confirm your table.',
+    lead: 'Fill in the form or give us a call.',
     callTitle: 'Phone',
     groupNote: 'For parties of {n} or more, please call.',
     formTitle: 'Plan your visit',
@@ -252,8 +252,8 @@ export const en: Copy = {
     notes: 'Notes',
     notesPlaceholder: 'Allergies, occasion, pushchair…',
     submit: 'Request a table',
-    disclaimer: 'This is a request, not a confirmed booking. We will get back to you to confirm.',
-    noscript: 'The form needs JavaScript. Without it, call us or write to the address below.',
+    disclaimer: 'Please wait for us to confirm your booking.',
+    noscript: 'Call or email us to book a table.',
     providerCta: 'Book online',
   },
   footer: {
