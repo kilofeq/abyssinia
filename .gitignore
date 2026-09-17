@@ -8,3 +8,6 @@ tsconfig.tsbuildinfo
 .env.*
 !.env.example
 *.log
+.wrangler/
+.dev.vars
+.dev.vars.*

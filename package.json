@@ -5,9 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b --noEmit && vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && node scripts/prerender.mjs",
+    "build": "tsc -b --noEmit && node scripts/build.mjs",
     "preview": "vite preview --port 4173",
-    "check:seo": "npm run build && node scripts/check-seo.mjs"
+    "check:seo": "npm run build && node scripts/check-seo.mjs",
+    "deploy": "npm run check:seo && wrangler deploy",
+    "dev:worker": "npm run build && wrangler dev",
+    "check:cloudflare": "npm run check:seo && wrangler deploy --dry-run"
   },
   "dependencies": {
     "react": "^18.3.1",
@@ -22,6 +25,10 @@
     "sharp": "^0.35.4",
     "tailwindcss": "^4.1.11",
     "typescript": "^5.7.2",
-    "vite": "^6.0.7"
+    "vite": "^6.0.7",
+    "wrangler": "^4.133.0"
+  },
+  "engines": {
+    "node": ">=22"
   }
 }

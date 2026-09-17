@@ -23,6 +23,27 @@ metadata, schema preservation, image files, alt text, anchors, sitemap and redir
 
 ## Production hosting
 
+### Cloudflare Workers (current target)
+
+The repository includes `wrangler.jsonc` for a static-assets Worker. In Workers
+Builds set the root to the repository root, build command to `npm run build`, and
+deploy command to `npx wrangler deploy`. Use Node 22 (`.node-version`). The Worker
+name in the dashboard must match `abyssinia` in the configuration.
+
+`npm run build` cleans generated output, builds browser assets, builds the Node
+renderer explicitly as `dist-ssr/entry-server.js`, then prerenders both languages.
+Do not use `node scripts/prerender.mjs` alone as the build command. The renderer is
+only used during the build; Workers serves `dist/` without a Node runtime.
+
+Run `npm run check:cloudflare` for SEO validation and a Wrangler deployment dry run,
+or `npm run dev:worker` to test the actual Workers asset routing locally.
+`npm run deploy` validates and deploys to the authenticated Cloudflare account.
+The asset configuration uses directory URLs and real 404 responses; `_redirects`
+handles legacy links. `.assetsignore` excludes Apache configuration from upload.
+Configure the custom domain and HTTPS/www normalization in Cloudflare.
+
+### Other static hosts
+
 Upload **only `dist/`**, including its dotfiles. Do not publish the repository root,
 `reference/`, `scripts/`, or `dist-ssr/`. This is a static website, not an SPA:
 **do not configure a wildcard rewrite to `index.html`**.

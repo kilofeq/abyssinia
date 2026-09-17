@@ -1,0 +1,2 @@
+# Apache configuration is not a public asset on Cloudflare Workers.
+.htaccess
