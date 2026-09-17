@@ -37,7 +37,7 @@ for (const route of ['menu', 'gallery', 'contact', 'reservation', 'about']) {
 }
 const sitemap = await readFile('dist/sitemap.xml', 'utf8')
 assert.equal((sitemap.match(/<loc>/g) ?? []).length, 2)
-assert(!(await readFile('dist/robots.txt', 'utf8')).includes('Disallow: /'))
+assert(!/^Disallow:\s*\/\s*$/m.test(await readFile('dist/robots.txt', 'utf8')))
 assert((await readFile('dist/404.html', 'utf8')).includes('noindex,follow'))
 await access('dist/.htaccess')
 console.log('Redirect map, sitemap, robots and 404 checks passed')

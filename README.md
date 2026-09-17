@@ -25,7 +25,7 @@ metadata, schema preservation, image files, alt text, anchors, sitemap and redir
 
 ### Cloudflare Workers (current target)
 
-The repository includes `wrangler.jsonc` for a static-assets Worker. In Workers
+The repository includes `wrangler.jsonc` for a Worker with static assets and a reservation API. In Workers
 Builds set the root to the repository root, build command to `npm run build`, and
 deploy command to `npx wrangler deploy`. Use Node 22 (`.node-version`). The Worker
 name in the dashboard must match `abyssinia` in the configuration.
@@ -33,7 +33,7 @@ name in the dashboard must match `abyssinia` in the configuration.
 `npm run build` cleans generated output, builds browser assets, builds the Node
 renderer explicitly as `dist-ssr/entry-server.js`, then prerenders both languages.
 Do not use `node scripts/prerender.mjs` alone as the build command. The renderer is
-only used during the build; Workers serves `dist/` without a Node runtime.
+only used during the build; Workers serves `dist/` and runs the reservation API without a Node runtime.
 
 Run `npm run check:cloudflare` for SEO validation and a Wrangler deployment dry run,
 or `npm run dev:worker` to test the actual Workers asset routing locally.
@@ -117,14 +117,19 @@ Historical 100/100 scores from earlier designs are not current performance claim
 The menu uses 34 photographs and three illustrations explain eating with injera.
 The opening photograph is preloaded as AVIF; WebP remains available as a fallback.
 Other images load lazily with fixed dimensions.
-The palette is cream, brick red, gold and green. Menu photos enlarge 2× on click,
+The palette is cream, brick red, gold and green. Menu photos enlarge 2.5× on click,
 close on a second click, outside click or Escape, and work with a keyboard.
 
 ## Reservations
 
-Phone and email are the current booking channels. The form composes an email in
-the visitor's mail client; it does not send it or confirm availability. A future
-booking provider can be configured with `RESERVATION_PROVIDER_URL`.
+The bilingual form has a month calendar and arrival-time buttons. A Worker writes
+requests to D1. Staff use `/admin/` to view a calendar and confirm, decline or
+cancel requests. **Changing status does not send email**: staff contact the guest
+using the displayed email/phone links. No live table inventory is implied.
+
+Setup, local development and operational details: [docs/reservations.md](docs/reservations.md).
+Until the production database and secrets are configured, the API fails closed
+and the form displays the restaurant's phone number instead of accepting requests.
 
 ## Facts to confirm with the restaurant
 

@@ -2,15 +2,6 @@ import type { Copy } from '../content/copy'
 import { site, RESERVATION_PROVIDER_URL } from '../content/site'
 import { Mesob } from './Mesob'
 
-/** 13:00 – 22:00 in half-hour steps, matching the restaurant's own booking form. */
-const times = (() => {
-  const out: string[] = []
-  for (let m = 13 * 60; m <= 22 * 60; m += 30) {
-    out.push(`${String(Math.floor(m / 60)).padStart(2, '0')}:${String(m % 60).padStart(2, '0')}`)
-  }
-  return out
-})()
-
 const fieldClass =
   'mt-1.5 w-full rounded-md border border-line bg-surface px-3.5 py-2.5 text-[0.98rem] text-ink placeholder:text-muted'
 const labelClass = 'block text-[0.85rem] font-semibold text-ink'
@@ -31,8 +22,8 @@ export function Reserve({ copy }: { copy: Copy }) {
         <Mesob className="h-auto w-full" count={10} />
       </div>
 
-      <div className="u-shell relative grid gap-12 lg:grid-cols-12 lg:gap-16">
-        <div className="lg:col-span-5">
+      <div className="u-shell relative">
+        <div className="reserve-intro">
           <p className="u-eyebrow text-onochre">{r.eyebrow}</p>
           <h2 id="reserve-title" className="mt-5 text-(length:--text-title)">
             {r.title}
@@ -55,7 +46,7 @@ export function Reserve({ copy }: { copy: Copy }) {
           </div>
         </div>
 
-        <div className="lg:col-span-7">
+        <div className="mt-10">
           {RESERVATION_PROVIDER_URL ? (
             <a
               href={RESERVATION_PROVIDER_URL}
@@ -64,7 +55,7 @@ export function Reserve({ copy }: { copy: Copy }) {
               {r.providerCta}
             </a>
           ) : (
-            <div className="rounded-lg bg-canvas p-6 text-ink sm:p-9">
+            <div className="booking-card bg-canvas text-ink">
               <h3 className="font-display text-(length:--text-head)">
                 {r.formTitle}
               </h3>
@@ -77,132 +68,162 @@ export function Reserve({ copy }: { copy: Copy }) {
 
               <form
                 data-reserve
-                action={`mailto:${site.reservationEmail}`}
+                action="/api/reservations"
                 method="post"
-                encType="text/plain"
-                className="mt-7 grid gap-5 sm:grid-cols-2"
-                data-email={site.reservationEmail}
+                className="booking-form mt-7"
               >
-                <div className="sm:col-span-2">
-                  <label className={labelClass} htmlFor="rs-name">
-                    {r.name}
-                  </label>
-                  <input
-                    className={fieldClass}
-                    id="rs-name"
-                    name="name"
-                    type="text"
-                    autoComplete="name"
-                    required
-                    placeholder={r.namePlaceholder}
-                  />
-                </div>
-
-                <div>
-                  <label className={labelClass} htmlFor="rs-email">
-                    {r.email}
-                  </label>
-                  <input
-                    className={fieldClass}
-                    id="rs-email"
-                    name="email"
-                    type="email"
-                    autoComplete="email"
-                    required
-                    placeholder="jan@example.com"
-                  />
-                </div>
-
-                <div>
-                  <label className={labelClass} htmlFor="rs-phone">
-                    {r.phone}{' '}
-                    <span className="font-normal text-muted">({r.phoneOptional})</span>
-                  </label>
-                  <input
-                    className={fieldClass}
-                    id="rs-phone"
-                    name="phone"
-                    type="tel"
-                    autoComplete="tel"
-                    placeholder={site.phone}
-                  />
-                </div>
-
-                <div>
-                  <label className={labelClass} htmlFor="rs-guests">
-                    {r.guests}
-                  </label>
-                  <select className={fieldClass} id="rs-guests" name="guests" defaultValue="2">
-                    {[1, 2, 3, 4, 5, 6, 7].map((n) => (
-                      <option key={n} value={n}>
-                        {n}
+                <div className="booking-schedule">
+                  <div className="sm:col-span-2 booking-calendar-wrap">
+                    <div data-booking-calendar aria-label={r.date} />
+                    <label className={labelClass} htmlFor="rs-date">
+                      {r.date}
+                    </label>
+                    <input
+                      className={fieldClass}
+                      id="rs-date"
+                      name="date"
+                      type="date"
+                      required
+                    />
+                    <p className="booking-help">
+                      {copy.locale === 'pl'
+                        ? 'Godziny według czasu w Krakowie. W poniedziałki odpoczywamy.'
+                        : 'All times are local to Kraków. Closed on Mondays.'}
+                    </p>
+                  </div>
+                  <div className="sm:col-span-2">
+                    <label className={labelClass} htmlFor="rs-time">
+                      {r.time}
+                    </label>
+                    <select
+                      className={fieldClass}
+                      id="rs-time"
+                      name="time"
+                      required
+                    >
+                      <option value="">
+                        {copy.locale === 'pl'
+                          ? 'Wybierz godzinę'
+                          : 'Choose a time'}
                       </option>
-                    ))}
-                  </select>
+                    </select>
+                    <div data-booking-times className="booking-times" />
+                  </div>
                 </div>
+                <div className="booking-details">
+                  <div className="sm:col-span-2">
+                    <label className={labelClass} htmlFor="rs-name">
+                      {r.name}
+                    </label>
+                    <input
+                      className={fieldClass}
+                      id="rs-name"
+                      name="name"
+                      type="text"
+                      maxLength={100}
+                      autoComplete="name"
+                      required
+                      placeholder={r.namePlaceholder}
+                    />
+                  </div>
 
-                <div>
-                  <label className={labelClass} htmlFor="rs-date">
-                    {r.date}
-                  </label>
-                  <input
-                    className={fieldClass}
-                    id="rs-date"
-                    name="date"
-                    type="date"
-                    required
-                    data-min-today
-                  />
-                </div>
+                  <div>
+                    <label className={labelClass} htmlFor="rs-email">
+                      {r.email}
+                    </label>
+                    <input
+                      className={fieldClass}
+                      id="rs-email"
+                      name="email"
+                      type="email"
+                      maxLength={254}
+                      autoComplete="email"
+                      required
+                      placeholder="jan@example.com"
+                    />
+                  </div>
 
-                <div className="sm:col-span-2">
-                  <label className={labelClass} htmlFor="rs-time">
-                    {r.time}
-                  </label>
-                  <select
-                    className={`${fieldClass} sm:max-w-[12rem]`}
-                    id="rs-time"
-                    name="time"
-                    defaultValue="19:00"
-                  >
-                    {times.map((t) => (
-                      <option key={t} value={t}>
-                        {t}
-                      </option>
-                    ))}
-                  </select>
-                </div>
+                  <div>
+                    <label className={labelClass} htmlFor="rs-phone">
+                      {r.phone}{' '}
+                      <span className="font-normal text-muted">
+                        ({r.phoneOptional})
+                      </span>
+                    </label>
+                    <input
+                      className={fieldClass}
+                      id="rs-phone"
+                      name="phone"
+                      type="tel"
+                      maxLength={40}
+                      autoComplete="tel"
+                      placeholder={site.phone}
+                    />
+                  </div>
 
-                <div className="sm:col-span-2">
-                  <label className={labelClass} htmlFor="rs-notes">
-                    {r.notes}
-                  </label>
-                  <textarea
-                    className={fieldClass}
-                    id="rs-notes"
-                    name="notes"
-                    rows={3}
-                    placeholder={r.notesPlaceholder}
-                  />
-                </div>
+                  <div>
+                    <label className={labelClass} htmlFor="rs-guests">
+                      {r.guests}
+                    </label>
+                    <select
+                      className={fieldClass}
+                      id="rs-guests"
+                      name="guests"
+                      defaultValue="2"
+                    >
+                      {[1, 2, 3, 4, 5, 6, 7].map((n) => (
+                        <option key={n} value={n}>
+                          {n}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
 
-                <div className="sm:col-span-2">
-                  <button
-                    type="submit"
-                    className="w-full rounded-full bg-clay px-6 py-3.5 font-semibold text-oncream transition-colors hover:bg-ink sm:w-auto"
-                    aria-describedby="rs-disclaimer"
-                  >
-                    {r.submit}
-                  </button>
-                  <p id="rs-disclaimer" className="mt-4 text-[0.85rem] leading-[1.5] text-muted">
-                    {r.disclaimer}
-                  </p>
-                  <p
-                    data-reserve-status
-                    role="status"
-                    aria-live="polite"
-                    className="mt-2 text-[0.85rem] leading-[1.5] font-semibold text-moss empty:mt-0"
-                  />
+                  <div className="sm:col-span-2">
+                    <label className={labelClass} htmlFor="rs-notes">
+                      {r.notes}
+                    </label>
+                    <textarea
+                      className={fieldClass}
+                      id="rs-notes"
+                      name="notes"
+                      maxLength={1000}
+                      rows={2}
+                      placeholder={r.notesPlaceholder}
+                    />
+                  </div>
+
+                  <div className="sm:col-span-2">
+                    <div data-turnstile />
+                    <label className="booking-trap" aria-hidden="true">
+                      Website
+                      <input name="website" tabIndex={-1} autoComplete="off" />
+                    </label>
+                    <button
+                      disabled
+                      type="submit"
+                      className="w-full rounded-full bg-clay px-6 py-3.5 font-semibold text-oncream transition-colors hover:bg-ink sm:w-auto"
+                      aria-describedby="rs-disclaimer"
+                    >
+                      {r.submit}
+                    </button>
+                    <p
+                      id="rs-disclaimer"
+                      className="mt-4 text-[0.85rem] leading-[1.5] text-muted"
+                    >
+                      {r.disclaimer}{' '}
+                      {copy.locale === 'pl'
+                        ? 'Dane wykorzystamy do obsługi rezerwacji i usuniemy do 90 dni po wizycie. Kontakt w sprawie danych:'
+                        : 'We use your details to handle your booking and delete them within 90 days after your visit. Data enquiries:'}{' '}
+                      <a href={`mailto:${site.email}`}>{site.email}</a>
+                    </p>
+                    <p
+                      data-reserve-status
+                      role="status"
+                      aria-live="polite"
+                      className="mt-2 text-[0.85rem] leading-[1.5] font-semibold text-moss empty:mt-0"
+                    />
+                  </div>
                 </div>
               </form>
             </div>

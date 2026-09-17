@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>Rezerwacje · Abyssinia</title>
+    <link rel="icon" href="/favicon.svg" />
+    <script type="module" src="/src/admin.ts"></script>
+  </head>
+  <body class="admin-body">
+    <header class="admin-header">
+      <a href="/">Abyssinia<span>REZERWACJE</span></a
+      ><button id="logout" hidden>Wyloguj</button>
+    </header>
+    <main class="admin-main">
+      <div id="login" class="admin-login">
+        <p class="u-eyebrow">Dla obsługi restauracji</p>
+        <h1>Panel obsługi</h1>
+        <p>Zaloguj się, aby zobaczyć nadchodzące wizyty.</p>
+        <form id="login-form">
+          <label for="admin-key">Klucz dostępu</label
+          ><input
+            id="admin-key"
+            type="password"
+            required
+            autocomplete="current-password"
+          /><button type="submit">Otwórz kalendarz →</button>
+        </form>
+      </div>
+      <section id="dashboard" hidden>
+        <div class="admin-title">
+          <div>
+            <p class="u-eyebrow">Abyssinia · Kraków</p>
+            <h1>Kalendarz rezerwacji</h1>
+          </div>
+          <button id="refresh">Odśwież ↻</button>
+        </div>
+        <div class="admin-layout">
+          <aside>
+            <div id="admin-calendar" class="admin-calendar"></div>
+            <div class="admin-legend">
+              <span>● Oczekujące i potwierdzone wizyty</span>
+              <p>
+                Zgłoszenia wymagają Twojego potwierdzenia. Skontaktuj się z
+                gościem mailowo lub telefonicznie.
+              </p>
+            </div>
+          </aside>
+          <section>
+            <div class="admin-day">
+              <h2 id="day-title"></h2>
+              <span id="day-count"></span>
+            </div>
+            <div id="reservations"></div>
+          </section>
+        </div>
+      </section>
+      <p id="admin-status" role="status" aria-live="polite"></p>
+    </main>
+  </body>
+</html>

@@ -8,9 +8,10 @@
     "build": "tsc -b --noEmit && node scripts/build.mjs",
     "preview": "vite preview --port 4173",
     "check:seo": "npm run build && node scripts/check-seo.mjs",
-    "deploy": "npm run check:seo && wrangler deploy",
-    "dev:worker": "npm run build && wrangler dev",
-    "check:cloudflare": "npm run check:seo && wrangler deploy --dry-run"
+    "deploy": "npm run check:seo && wrangler deploy --env \"\"",
+    "dev:worker": "npm run build && wrangler d1 migrations apply DB --local --env local && wrangler dev --env local --ip 127.0.0.1 --port 8788",
+    "check:cloudflare": "npm run check:seo && wrangler deploy --dry-run --env \"\"",
+    "test:booking": "node tests/booking.mjs"
   },
   "dependencies": {
     "react": "^18.3.1",
