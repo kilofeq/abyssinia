@@ -116,9 +116,11 @@ export function Footer({ copy }: { copy: Copy }) {
             href={copy.alt.path}
             hrefLang={copy.alt.locale}
             lang={copy.alt.locale}
-            className="text-ondim no-underline underline-offset-4 hover:text-oncream hover:underline"
+            aria-label={copy.alt.label}
+            title={copy.alt.label}
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full text-2xl no-underline transition-colors hover:bg-oncream/10"
           >
-            {copy.alt.label}
+            <span aria-hidden="true">{copy.alt.locale === 'en' ? '🇬🇧' : '🇵🇱'}</span>
           </a>
         </p>
       </div>

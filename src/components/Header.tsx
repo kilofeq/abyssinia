@@ -52,9 +52,11 @@ export function Header({ copy }: { copy: Copy }) {
             href={copy.alt.path}
             hrefLang={copy.alt.locale}
             lang={copy.alt.locale}
-            className="u-eyebrow text-muted no-underline transition-colors hover:text-clay"
+            aria-label={copy.alt.label}
+            title={copy.alt.label}
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full text-2xl no-underline transition-colors hover:bg-line/40"
           >
-            {copy.alt.label}
+            <span aria-hidden="true">{copy.alt.locale === 'en' ? '🇬🇧' : '🇵🇱'}</span>
           </a>
           <a
             href="#reserve"
