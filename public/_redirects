@@ -1,0 +1,14 @@
+# Permanent redirects for the previous restaurant website.
+/menu /#menu 301
+/menu/ /#menu 301
+/gallery /#room 301
+/gallery/ /#room 301
+/contact /#visit 301
+/contact/ /#visit 301
+/reservation /#reserve 301
+/reservation/ /#reserve 301
+/about /#table 301
+/about/ /#table 301
+/en /en/ 301
+/index.html / 301
+/en/index.html /en/ 301

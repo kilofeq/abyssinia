@@ -1,0 +1,150 @@
+{
+  "kitfo": {
+    "width": 360,
+    "height": 284
+  },
+  "doro-wot": {
+    "width": 360,
+    "height": 277
+  },
+  "siga-firfir": {
+    "width": 360,
+    "height": 282
+  },
+  "doro-tibs": {
+    "width": 360,
+    "height": 270
+  },
+  "dekak-tibs": {
+    "width": 360,
+    "height": 340
+  },
+  "dulet": {
+    "width": 360,
+    "height": 343
+  },
+  "yeawaze-tibs": {
+    "width": 360,
+    "height": 354
+  },
+  "merek-tibs": {
+    "width": 360,
+    "height": 316
+  },
+  "shekla-tibs": {
+    "width": 360,
+    "height": 315
+  },
+  "key-wot": {
+    "width": 360,
+    "height": 267
+  },
+  "dinch-be-siga": {
+    "width": 360,
+    "height": 299
+  },
+  "bozena-shiro": {
+    "width": 360,
+    "height": 341
+  },
+  "half-half": {
+    "width": 360,
+    "height": 328
+  },
+  "misir-wot": {
+    "width": 360,
+    "height": 274
+  },
+  "kik-wot": {
+    "width": 360,
+    "height": 274
+  },
+  "gomen-be-dinch": {
+    "width": 360,
+    "height": 277
+  },
+  "keysir": {
+    "width": 360,
+    "height": 277
+  },
+  "tikil-gomen": {
+    "width": 360,
+    "height": 278
+  },
+  "fosolia": {
+    "width": 360,
+    "height": 278
+  },
+  "shiro": {
+    "width": 360,
+    "height": 242
+  },
+  "alicha-dinich": {
+    "width": 360,
+    "height": 194
+  },
+  "firfir": {
+    "width": 360,
+    "height": 277
+  },
+  "suf-fitfit": {
+    "width": 360,
+    "height": 277
+  },
+  "pasta": {
+    "width": 360,
+    "height": 331
+  },
+  "salad": {
+    "width": 360,
+    "height": 309
+  },
+  "timatim-kurt": {
+    "width": 360,
+    "height": 234
+  },
+  "veggie-rice": {
+    "width": 360,
+    "height": 283
+  },
+  "karya-sineg": {
+    "width": 360,
+    "height": 281
+  },
+  "plain-rice": {
+    "width": 360,
+    "height": 191
+  },
+  "meat-combo": {
+    "width": 684,
+    "height": 494
+  },
+  "vegan-combo": {
+    "width": 854,
+    "height": 810
+  },
+  "basket": {
+    "width": 360,
+    "height": 310
+  },
+  "tej": {
+    "width": 222,
+    "height": 320
+  },
+  "coffee": {
+    "width": 272,
+    "height": 326
+  },
+  "step-tear": {
+    "width": 320,
+    "height": 233
+  },
+  "step-scoop": {
+    "width": 320,
+    "height": 200
+  },
+  "step-eat": {
+    "width": 320,
+    "height": 206
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "widths": [
+    320,
+    400,
+    480,
+    640,
+    800,
+    960
+  ],
+  "hero": {
+    "widths": [
+      400,
+      480,
+      560,
+      680,
+      760,
+      960
+    ],
+    "wideMax": 760
+  },
+  "photos": {
+    "inside9": {
+      "width": 960,
+      "height": 1280
+    },
+    "inside1": {
+      "width": 960,
+      "height": 1280
+    },
+    "inside6": {
+      "width": 960,
+      "height": 1280
+    },
+    "inside3": {
+      "width": 960,
+      "height": 1280
+    },
+    "inside7": {
+      "width": 960,
+      "height": 1280
+    },
+    "inside8": {
+      "width": 960,
+      "height": 1280
+    }
+  }
+}

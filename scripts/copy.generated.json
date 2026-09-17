@@ -1,0 +1,136 @@
+{
+  "pl": {
+    "hero": {
+      "kicker": "Etiopska restauracja i bar przy ulicy Batorego w Krakowie",
+      "lead": "Podajemy potrawy na jednym wspólnym półmisku, wyłożonym plackiem injera. Jemy rękami, bez sztućców, dzieląc się jedzeniem przy stole. Gotujemy tradycyjne gulasze wot z mięsem oraz duży wybór dań roślinnych.",
+      "ctaPrimary": "Zobacz menu",
+      "ctaSecondary": "Zarezerwuj stolik"
+    },
+    "table": {
+      "eyebrow": "Przy stole",
+      "title": "Jeden półmisek dla wszystkich",
+      "body": [
+        "Podstawą posiłku jest injera – miękki, lekko kwaśny chleb z teffu, który służy tu za talerz i sztućce zarazem. Na nim lądują gulasze, warzywa i sosy. Wszyscy przy stole jedzą z tej samej tacy.",
+        "Gulasze wot gotujemy powoli na bazie cebuli i mieszanek przypraw. Niektóre są ostre od papryki berbere, inne łagodne, doprawione kurkumą."
+      ],
+      "stepsTitle": "Trzy ruchy",
+      "steps": [
+        "Prawą ręką oderwij kawałek injery.",
+        "Użyj go, by chwycić porcję gulaszu lub warzyw.",
+        "Włóż zwinięty kęs prosto do ust."
+      ],
+      "stepsSource": "Z karty dań Abyssinia",
+      "asideTitle": "Dla początkujących",
+      "aside": "Jeśli jesz u nas pierwszy raz, wybierz półmisek degustacyjny. Pozwala spróbować kilku różnych dań mięsnych lub warzywnych podczas jednego posiłku."
+    },
+    "menu": {
+      "eyebrow": "Karta",
+      "title": "Jedzenie i napoje",
+      "lead": "Gotujemy dania mięsne i warzywne. Podajemy też etiopską kawę, miód pitny tej oraz zestawy dań serwowane w tradycyjnym koszu mesob.",
+      "veganLine": "W karcie mamy {n} dań wegańskich – to osobny, pełnoprawny dział menu, a nie pojedyncze pozycje zamienne.",
+      "priceNote": "Ceny w złotych, przepisane z aktualnej karty dań.",
+      "allergens": "O alergeny w potrawach zapytaj obsługę przed złożeniem zamówienia.",
+      "jump": "Przejdź do dań"
+    },
+    "visit": {
+      "eyebrow": "Adres i godziny",
+      "title": "Jak do nas trafić",
+      "addressTitle": "Adres",
+      "hoursTitle": "Godziny otwarcia",
+      "contactTitle": "Kontakt",
+      "followTitle": "W sieci",
+      "directions": "Restauracja mieści się przy ul. Stefana Batorego 1 w Krakowie."
+    },
+    "reserve": {
+      "eyebrow": "Rezerwacje",
+      "title": "Zamów stolik",
+      "lead": "Napisz do nas lub zadzwoń. Wysłanie formularza tworzy wiadomość e-mail w Twoim programie pocztowym i stanowi jedynie zapytanie o wolne miejsca.",
+      "callTitle": "Telefon",
+      "callBody": "Zadzwoń bezpośrednio pod numer +48 512 540 600.",
+      "groupNote": "W przypadku grup od {n} osób prosimy o kontakt wyłącznie telefoniczny.",
+      "formTitle": "Formularz rezerwacji",
+      "formLead": "Wypełnij pola, aby przygotować treść wiadomości e-mail z zapytaniem.",
+      "submit": "Przygotuj e-mail",
+      "disclaimer": "Wysłanie wiadomości nie oznacza potwierdzenia rezerwacji. Odpowiemy mailowo lub oddzwonimy, by potwierdzić termin.",
+      "noscript": "Twój program nie obsługuje skryptów. Wyślij wiadomość bezpośrednio na info@abyssiniarestobar.pl lub zadzwoń.",
+      "notesPlaceholder": "Dodatkowe informacje (np. preferencje dotyczące stolika)"
+    },
+    "footer": {
+      "tagline": "Abyssinia Ethiopian Restaurant & Bar w Krakowie",
+      "quickTitle": "Nawigacja",
+      "contactTitle": "Kontakt",
+      "hoursTitle": "Godziny"
+    },
+    "meta": {
+      "title": "Abyssinia | Etiopska restauracja w Krakowie",
+      "description": "Etiopska restauracja i bar przy ul. Batorego 1 w Krakowie. Tradycyjne wot, placki injera, dania mięsne i 16 potraw wegańskich."
+    }
+  },
+  "en": {
+    "hero": {
+      "kicker": "Ethiopian restaurant and bar on Batorego Street, Kraków",
+      "lead": "We serve food on a single shared platter lined with injera flatbread. You eat with your hands, tearing bread and sharing the meal. Our kitchen slow-cooks traditional wot stews alongside a large vegan selection.",
+      "ctaPrimary": "View menu",
+      "ctaSecondary": "Book a table"
+    },
+    "table": {
+      "eyebrow": "At the table",
+      "title": "One platter, shared",
+      "body": [
+        "The meal is built on injera: a soft, slightly sour flatbread that works as both plate and cutlery. Stews and vegetables are spooned directly on top, and everyone shares from the same platter.",
+        "Wot are rich stews simmered slowly with onions and spice blends. Some are spicy with berbere pepper, while others are mild and seasoned with turmeric."
+      ],
+      "stepsTitle": "Three steps",
+      "steps": [
+        "Tear off a piece of injera with your right hand.",
+        "Use the bread to scoop up a portion of stew or vegetables.",
+        "Bring the parcel straight to your mouth."
+      ],
+      "stepsSource": "From the Abyssinia printed menu",
+      "asideTitle": "First time here?",
+      "aside": "Order a sharing platter. It brings several stews and vegetable dishes together on one tray so you can sample across the menu."
+    },
+    "menu": {
+      "eyebrow": "Menu",
+      "title": "Food and drink",
+      "lead": "We serve slow-cooked meat stews, shared platters in a woven mesob basket, Ethiopian coffee, and tej honey wine.",
+      "veganLine": "We offer {n} vegan dishes grouped in their own dedicated section, not tucked away as side options.",
+      "priceNote": "Prices in Polish złoty, taken directly from our printed menu.",
+      "allergens": "Please speak with our staff before ordering if you have food allergies.",
+      "jump": "Skip to dishes"
+    },
+    "visit": {
+      "eyebrow": "Visit",
+      "title": "Location and hours",
+      "addressTitle": "Address",
+      "hoursTitle": "Opening hours",
+      "contactTitle": "Contact",
+      "followTitle": "Online",
+      "directions": "Located at Stefana Batorego 1 in Kraków."
+    },
+    "reserve": {
+      "eyebrow": "Reservations",
+      "title": "Request a table",
+      "lead": "Send a request or give us a call. Submitting this form drafts an email in your own mail client to ask for table availability.",
+      "callTitle": "Phone",
+      "callBody": "Call us directly at +48 512 540 600.",
+      "groupNote": "For parties of {n} or more, please call us instead of using the form.",
+      "formTitle": "Booking request",
+      "formLead": "Fill out the fields below to compose your reservation email.",
+      "submit": "Draft email",
+      "disclaimer": "This form generates an inquiry, not an instant booking. Your table is confirmed only after we reply by email or phone.",
+      "noscript": "Scripts are disabled. Please email info@abyssiniarestobar.pl directly or call us.",
+      "notesPlaceholder": "Special requests or seating notes"
+    },
+    "footer": {
+      "tagline": "Abyssinia Ethiopian Restaurant & Bar in Kraków",
+      "quickTitle": "Links",
+      "contactTitle": "Contact",
+      "hoursTitle": "Hours"
+    },
+    "meta": {
+      "title": "Abyssinia | Ethiopian Restaurant in Kraków",
+      "description": "Ethiopian restaurant and bar at Batorego 1 in Kraków. Shared platters, injera flatbread, slow-cooked wot, and 16 vegan dishes."
+    }
+  }
+}

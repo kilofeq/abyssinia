@@ -1,0 +1,243 @@
+@import 'tailwindcss';
+
+/* ---------------------------------------------------------------
+   Self-hosted type. Subset to Latin + Latin Extended-A (Polish) and,
+   for Ethiopic, to the glyphs of the restaurant's own Amharic name.
+   Built by scripts/build-fonts.sh.
+   --------------------------------------------------------------- */
+@font-face {
+  font-family: 'Young Serif';
+  src: url('/fonts/youngserif.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Instrument Sans';
+  src: url('/fonts/instrumentsans.woff2') format('woff2-variations');
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Ethiopic';
+  src: url('/fonts/ethiopic.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+1200-137F;
+}
+
+@theme {
+  /* Surfaces */
+  --color-canvas: #f8efdD;
+  --color-surface: #fffaf0;
+  --color-night: #191512;
+  --color-nightsoft: #241e19;
+
+  /* Ink */
+  --color-ink: #241f1a;
+  --color-muted: #635a4e;
+  --color-line: #ded3c0;
+  --color-linesoft: #ebe3d5;
+
+  /* The mark's own colour, sampled from the restaurant's logo file. */
+  --color-cocoa: #3b2313;
+
+  /* Accents — brick, honey, mesob green */
+  --color-clay: #a53622;
+  --color-ochre: #8a5b12;
+  --color-moss: #244d3d;
+
+  /* Reversed ink, for the dark band */
+  --color-oncream: #f6f1e8;
+  --color-ondim: #c9bfae;
+  --color-onochre: #e0a83c;
+
+  --font-display: 'Young Serif', 'Iowan Old Style', Georgia, serif;
+  --font-sans: 'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-am: 'Ethiopic', 'Noto Sans Ethiopic', 'Kefa', sans-serif;
+
+  --text-display: clamp(3.25rem, 1.2rem + 10.2vw, 10rem);
+  --text-title: clamp(2rem, 1.15rem + 3.6vw, 3.75rem);
+  --text-head: clamp(1.4rem, 1.08rem + 1.35vw, 2.1rem);
+  --text-lead: clamp(1.08rem, 0.99rem + 0.42vw, 1.3rem);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Clears the two-row mobile header, then the single-row desktop one. */
+    scroll-padding-top: 7.5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+  @media (width >= 48rem) {
+    html { scroll-padding-top: 5.5rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-synthesis-weight: none;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-clay);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+  ::selection {
+    background: var(--color-clay);
+    color: var(--color-oncream);
+  }
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    /* Young Serif ships Regular only — never ask for a weight it cannot draw. */
+    font-weight: 400;
+    letter-spacing: -0.018em;
+    line-height: 1.06;
+    text-wrap: balance;
+  }
+  /* Young Serif carries both figure sets; lining + tabular keeps a price
+     column aligned and a numeral row on one baseline. */
+  .font-display {
+    font-variant-numeric: lining-nums tabular-nums;
+  }
+  p { text-wrap: pretty; }
+  [lang='am'] {
+    font-family: var(--font-am);
+    font-weight: 500;
+  }
+}
+
+@utility u-shell {
+  width: 100%;
+  max-width: 78rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+  @media (width >= 48rem) { padding-inline: 2.5rem; }
+}
+
+/* Fine woven bands in the palette of the restaurant's baskets. */
+@utility u-weave-rule {
+  height: 10px;
+  background-image:
+    linear-gradient(90deg, #a53622 0 48px, #d5a442 48px 96px, #244d3d 96px 144px, transparent 144px),
+    linear-gradient(var(--color-line), var(--color-line));
+  background-size: 144px 4px, 100% 1px;
+  background-position: left top, left bottom;
+  background-repeat: no-repeat;
+}
+
+.shared-table {
+  background: var(--color-moss);
+  color: var(--color-oncream);
+  position: relative;
+}
+.shared-table .u-eyebrow { color: #f0c36b; }
+.shared-table p { color: #eee5d3; }
+.shared-table .border-l-2 { border-color: #d5a442; }
+.shared-table .table-steps {
+  background: #f4dfad;
+  color: var(--color-ink);
+  border: 0;
+  border-top: 4px solid #d5a442;
+  border-radius: 2rem 2rem 0.4rem 0.4rem;
+}
+.table-steps li > span:first-child {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  background: var(--color-clay);
+  color: white;
+  border-radius: 50%;
+}
+#menu h2, #menu h3 { color: var(--color-clay); }
+#menu-vegan h3 { color: var(--color-moss); }
+#menu nav a { background: var(--color-canvas); }
+#menu nav a:hover { background: #f1d9a8; }
+
+@utility u-leader {
+  flex: 1 1 auto;
+  min-width: 1.25rem;
+  height: 1px;
+  margin-bottom: 0.32em;
+  background-image: radial-gradient(circle, var(--color-line) 1px, transparent 1px);
+  background-size: 6px 2px;
+  background-repeat: repeat-x;
+}
+
+@utility u-eyebrow {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.food-hero { background: #f8efdd; }
+.hero-platter { padding: 2.5rem 0 4.5rem; isolation: isolate; }
+.platter-disc {
+  position: absolute; inset: 8% 5% 13%; border-radius: 50%;
+  background: #e7ba58; z-index: -1;
+}
+.platter-weave {
+  position: absolute; inset: -4% -5%; width: 110%; height: 110%;
+  color: #a53622; opacity: .72; transform: rotate(-12deg); z-index: -1;
+}
+.platter-weave circle:nth-child(3n) { stroke: var(--color-moss); }
+.platter-weave circle:nth-child(3n + 1) { stroke: #bb882b; }
+.u-eyebrow > svg { width: 1.2rem; height: 1.2rem; }
+.platter-caption {
+  position: absolute; bottom: .2rem; right: 5%; z-index: 11;
+  padding: 1rem 1.4rem; background: var(--color-moss); color: #fff6e3;
+  font-family: var(--font-display); font-size: 1.25rem; transform: rotate(-4deg);
+  border-radius: 55% 45% 48% 52% / 16% 21% 17% 20%; text-align: center;
+}
+.dish-row { display: flex; align-items: flex-start; gap: 1rem; }
+.dish-info { flex: 1; min-width: 0; }
+.dish-info h4 { line-height: 1.3; }
+.dish-photo { width: 6.5rem; height: 6.5rem; object-fit: contain; flex-shrink: 0; }
+.dish-zoom {
+  position: relative; flex-shrink: 0; align-self: flex-start;
+  border: 0; padding: 0; background: transparent; border-radius: .75rem;
+  cursor: zoom-in; transform-origin: left center;
+  transition: transform 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
+}
+.dish-zoom[aria-pressed='true'] {
+  transform: scale(2); z-index: 20; cursor: zoom-out;
+}
+.dish-zoom[aria-pressed='true']::before {
+  content: ''; position: absolute; inset: -.65rem; z-index: -1;
+  border-radius: 1rem; background: var(--color-surface);
+  box-shadow: 0 2px 8px #3b231312;
+}
+.dish-zoom-hint {
+  position: absolute; right: 0; bottom: 0; display: grid; place-items: center;
+  width: 1.1rem; height: 1.1rem; border-radius: 50%;
+  background: var(--color-surface); color: var(--color-moss);
+  border: 1px solid var(--color-line); font-size: .85rem; line-height: 1;
+}
+.dish-zoom[aria-pressed='true'] .dish-zoom-hint { visibility: hidden; }
+#menu-platters .dish-photo { width: 8rem; height: 8rem; }
+.step-drawing { width: 6rem; height: 4.8rem; flex-shrink: 0; object-fit: contain; mix-blend-mode: multiply; }
+.table-steps li > span:first-of-type { display: none; }
+@media (max-width: 39.999rem) {
+  .dish-row { gap: .8rem; }
+  .dish-photo, #menu-platters .dish-photo { width: 5rem; height: 5rem; }
+  .dish-info .u-leader { min-width: .4rem; }
+  .dish-info h4 { font-size: 1rem; }
+  .platter-caption { font-size: 1.1rem; }
+  .eating-step { gap: .8rem; }
+  .step-drawing { width: 4.8rem; height: 4.8rem; }
+}
+.hero-platter img { clip-path: ellipse(48% 48% at 50% 50%); }
