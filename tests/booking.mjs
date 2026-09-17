@@ -215,6 +215,11 @@ try {
     )
     assert.equal((await weakKey.json()).enabled, false)
     const rules = await vite.ssrLoadModule('/src/booking-rules.ts')
+    for (const [date, first, last] of [['2026-09-22', '16:00', '20:00'], ['2026-09-23', '16:00', '20:00'], ['2026-09-24', '16:00', '20:00'], ['2026-09-18', '16:00', '21:00'], ['2026-09-19', '15:00', '21:00'], ['2026-09-20', '15:00', '21:00']]) {
+      const slots = rules.bookingTimes(date, new Date('2026-09-17T08:00:00Z'))
+      assert.equal(slots[0], first, date)
+      assert.equal(slots.at(-1), last, date)
+    }
     assert.equal(
       rules.warsawNow(new Date('2026-03-29T01:30:00Z')).time,
       '03:30',
@@ -229,7 +234,7 @@ try {
     )
     assert.equal(
       rules.bookingTimes('2026-09-18', new Date('2026-09-17T08:00:00Z')).at(-1),
-      '22:00',
+      '21:00',
     )
   } finally {
     await vite.close()

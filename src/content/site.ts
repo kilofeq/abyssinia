@@ -29,12 +29,12 @@ export const site = {
 
 /** 1 = Monday … 7 = Sunday. `null` = closed that day. */
 export const hours: { day: number; open: string; close: string }[] = [
-  { day: 2, open: '13:00', close: '22:00' },
-  { day: 3, open: '13:00', close: '22:00' },
-  { day: 4, open: '13:00', close: '22:00' },
-  { day: 5, open: '13:00', close: '23:00' },
-  { day: 6, open: '13:00', close: '23:00' },
-  { day: 7, open: '13:00', close: '22:00' },
+  { day: 2, open: '16:00', close: '21:00' },
+  { day: 3, open: '16:00', close: '21:00' },
+  { day: 4, open: '16:00', close: '21:00' },
+  { day: 5, open: '16:00', close: '22:00' },
+  { day: 6, open: '15:00', close: '22:00' },
+  { day: 7, open: '15:00', close: '22:00' },
 ]
 
 export const closedDays = [1]
