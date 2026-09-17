@@ -32,5 +32,16 @@
         }
       ]
     }
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "abyssinia",
+      "database_id": "1207421a-40f6-4081-91af-01952ce919ae",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "vars": {
+    "TURNSTILE_ENABLED": "false"
   }
 }

@@ -9,6 +9,7 @@ interface Env {
   ASSETS: { fetch(request: Request): Promise<Response> }
   DB?: { prepare(sql: string): Statement }
   ADMIN_TOKEN?: string
+  TURNSTILE_ENABLED?: string
   TURNSTILE_SECRET_KEY?: string
   TURNSTILE_SITE_KEY?: string
   LOCAL_DEVELOPMENT?: string
@@ -91,16 +92,17 @@ export default {
       const local =
         env.LOCAL_DEVELOPMENT === 'true' &&
         ['localhost', '127.0.0.1'].includes(url.hostname)
+      const requireTurnstile = !local && env.TURNSTILE_ENABLED !== 'false'
       const ready = Boolean(
         env.DB &&
           env.ADMIN_TOKEN &&
           (local || env.ADMIN_TOKEN.length >= 32) &&
-          (local || (env.TURNSTILE_SECRET_KEY && env.TURNSTILE_SITE_KEY)),
+          (!requireTurnstile || (env.TURNSTILE_SECRET_KEY && env.TURNSTILE_SITE_KEY)),
       )
       if (url.pathname === '/api/booking-config' && request.method === 'GET')
         return json({
           enabled: ready,
-          siteKey: local ? null : (env.TURNSTILE_SITE_KEY ?? null),
+          siteKey: requireTurnstile ? (env.TURNSTILE_SITE_KEY ?? null) : null,
         })
       if (!env.DB) return json({ error: 'unavailable' }, 503)
       if (!['GET', 'POST', 'PATCH'].includes(request.method))
@@ -208,7 +210,7 @@ export default {
         return existing.payload_hash === payloadHash
           ? json({ id: existing.id, status: 'pending' })
           : json({ error: 'conflict' }, 409)
-      if (!local) {
+      if (requireTurnstile) {
         const token = str('turnstileToken')
         if (!token || token.length > 2048)
           return json({ error: 'challenge' }, 400)

@@ -204,6 +204,16 @@ try {
       false,
       'Local bypass must not work on a public hostname',
     )
+    const withoutChallenge = await worker.fetch(
+      new Request('https://restaurant.example/api/booking-config'),
+      { DB: {}, ADMIN_TOKEN: token, TURNSTILE_ENABLED: 'false' },
+    )
+    assert.deepEqual(await withoutChallenge.json(), { enabled: true, siteKey: null })
+    const weakKey = await worker.fetch(
+      new Request('https://restaurant.example/api/booking-config'),
+      { DB: {}, ADMIN_TOKEN: 'short', TURNSTILE_ENABLED: 'false' },
+    )
+    assert.equal((await weakKey.json()).enabled, false)
     const rules = await vite.ssrLoadModule('/src/booking-rules.ts')
     assert.equal(
       rules.warsawNow(new Date('2026-03-29T01:30:00Z')).time,

@@ -8,7 +8,7 @@
 - Potwierdzanie, odrzucanie, anulowanie i przywracanie zgłoszeń.
 - Nie ma automatycznego wysyłania wiadomości. Obsługa kontaktuje się z gościem przez
   telefon lub e-mail; panel wyraźnie przypomina o tym przed zmianą statusu.
-- Zabezpieczenie Turnstile w produkcji, limit prób, kontrola danych na serwerze,
+- Opcjonalne zabezpieczenie Turnstile, limit prób, kontrola danych na serwerze,
   idempotencja wysyłania i ochrona przed nadpisaniem zmian innej osoby.
 - Klucz panelu jest tylko w pamięci karty. Odświeżenie wymaga ponownego logowania.
   API weryfikuje klucz po stronie serwera; samo ukrycie panelu nie jest ochroną.
@@ -38,7 +38,15 @@ Lokalna baza jest oddzielna od produkcyjnej. Turnstile pomijamy tylko z flagą
 `LOCAL_DEVELOPMENT=true` **i** hostem `localhost` lub `127.0.0.1`.
 Nigdy nie przenoś flagi ani lokalnego klucza do produkcji.
 
-## Aktywacja produkcji na istniejącym Workerze `abyssinia`
+## Konfiguracja produkcji na Workerze `abyssinia`
+
+Podłączona baza: `abyssinia`, ID `1207421a-40f6-4081-91af-01952ce919ae`.
+Turnstile jest obecnie wyłączone na prośbę właściciela przez
+`vars.TURNSTILE_ENABLED = "false"`. Limity prób, honeypot, walidacja,
+kontrola originu i uwierzytelnianie panelu pozostają aktywne.
+Klucz panelu ustawiony jest jako sekret `ADMIN_TOKEN`.
+
+### Konfiguracja od zera (nie twórz ponownie istniejącej bazy)
 
 Potrzebne jest zalogowane konto Cloudflare. Wykonaj:
 
@@ -64,8 +72,9 @@ npx wrangler secret put ADMIN_TOKEN --env ""
 ```
 
 `ADMIN_TOKEN` powinien być losowym kluczem co najmniej 32-znakowym, przechowywanym
-w menedżerze haseł obsługi. Główna konfiguracja celowo nie zawiera fikcyjnego DB ID
-ani kluczy. Formularz jest wyłączony do ich podłączenia.
+w menedżerze haseł obsługi. Główna konfiguracja zawiera rzeczywisty DB ID, ale nigdy sekretów.
+Aby włączyć Turnstile, ustaw `TURNSTILE_ENABLED = "true"` po dodaniu obu kluczy.
+Bez jawnego `"false"` serwer domyślnie wymaga Turnstile.
 
 ```sh
 npm run check:cloudflare
@@ -81,7 +90,8 @@ Dla przyszłych zmian bazy uruchom migracje przed wdrożeniem kodu, który ich w
 
 Wyślij własną testową rezerwację, sprawdź pojawienie się w panelu i zmianę statusu.
 Sprawdź, że `/api/admin/reservations?month=2026-09` bez klucza zwraca 401
-oraz że Turnstile działa na rzeczywistej domenie. Sprawdź Cron Triggers i retencję.
+oraz że `/api/booking-config` zwraca `enabled: true`. Jeżeli później włączysz
+Turnstile, sprawdź je na rzeczywistej domenie. Sprawdź Cron Triggers i retencję.
 Obsługa powinna regularnie sprawdzać panel — ten wariant nie wysyła powiadomień.
 
 ## Testy

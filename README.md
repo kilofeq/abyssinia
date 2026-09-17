@@ -128,8 +128,9 @@ cancel requests. **Changing status does not send email**: staff contact the gues
 using the displayed email/phone links. No live table inventory is implied.
 
 Setup, local development and operational details: [docs/reservations.md](docs/reservations.md).
-Until the production database and secrets are configured, the API fails closed
-and the form displays the restaurant's phone number instead of accepting requests.
+Production uses the bound `abyssinia` D1 database. Turnstile is explicitly disabled
+for now; rate limiting and server-side validation remain enabled. Staff access
+requires the `ADMIN_TOKEN` secret.
 
 ## Facts to confirm with the restaurant
 
