@@ -287,8 +287,8 @@
   line-height: 1.3;
 }
 .dish-photo {
-  width: 6.5rem;
-  height: 6.5rem;
+  width: 7.15rem;
+  height: 7.15rem;
   object-fit: contain;
   flex-shrink: 0;
 }
@@ -340,8 +340,8 @@
   visibility: hidden;
 }
 #menu-platters .dish-photo {
-  width: 8rem;
-  height: 8rem;
+  width: 8.8rem;
+  height: 8.8rem;
 }
 .step-drawing {
   width: 8rem;
@@ -359,8 +359,8 @@
   }
   .dish-photo,
   #menu-platters .dish-photo {
-    width: 5rem;
-    height: 5rem;
+    width: 5.5rem;
+    height: 5.5rem;
   }
   .dish-info .u-leader {
     min-width: 0.4rem;

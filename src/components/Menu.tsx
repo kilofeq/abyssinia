@@ -38,7 +38,12 @@ function DishRow({ dish, copy }: { dish: Dish; copy: Copy }) {
         <button type="button" className="dish-zoom" data-dish-zoom aria-pressed="false"
           aria-label={`${copy.locale === 'pl' ? 'Powiększenie zdjęcia' : 'Enlarge photo'}: ${dish.name}`}>
           <FoodImage id={dish.id} alt={foodAlt[dish.id]?.[copy.locale] ?? dish.name} className="dish-photo" />
-          <span className="dish-zoom-hint" aria-hidden="true">+</span>
+          <span className="dish-zoom-hint" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" focusable="false">
+              <circle cx="10.5" cy="10.5" r="6.5" />
+              <path d="m16 16 5 5" />
+            </svg>
+          </span>
         </button>
       )}
       <div className="dish-info">
