@@ -28,8 +28,6 @@ export type Copy = {
     body: string
     stepsTitle: string
     steps: string[]
-    asideTitle: string
-    aside: string
   }
   gallery: { eyebrow: string; title: string }
   menu: {
@@ -113,15 +111,13 @@ export const pl: Copy = {
     eyebrow: 'Kuchnia etiopska',
     title: 'Dania do dzielenia',
     body:
-      'Dania układamy obok siebie na injerze — miękkim, lekko kwaśnym placku, który zastępuje i talerz, i sztućce. Wot to gulasze duszone godzinami: jedne ostre od berbere, inne łagodne, z kurkumą.',
+      'Dania podajemy na wspólnym talerzu z injerą — etiopskim plackiem, którym nabiera się jedzenie.',
     stepsTitle: 'Jak jeść injerę?',
     steps: [
       'Prawą ręką oderwij kawałek injery.',
       'Nabierz nim jedzenie z talerza.',
       'Włóż do ust.',
     ],
-    asideTitle: 'Pierwszy raz?',
-    aside: 'Na początek polecamy talerz do dzielenia, z kilkoma daniami do spróbowania.',
   },
   gallery: {
     eyebrow: 'Galeria',
@@ -208,15 +204,13 @@ export const en: Copy = {
     eyebrow: 'Ethiopian cuisine',
     title: 'Sharing platters',
     body:
-      'Dishes are laid side by side on injera — a soft, faintly sour flatbread that stands in for both the plate and the cutlery. Wot are the stews, simmered for hours: some sharp with berbere, some mild with turmeric.',
+      'Dishes come on a shared platter with injera — an Ethiopian flatbread used to scoop up the food.',
     stepsTitle: 'How to eat injera',
     steps: [
       'Tear off a piece of injera with your right hand.',
       'Use it to pick up food from the platter.',
       'Enjoy your bite.',
     ],
-    asideTitle: 'First time?',
-    aside: 'Start with a sharing platter to try a selection of dishes.',
   },
   gallery: {
     eyebrow: 'Gallery',

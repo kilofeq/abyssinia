@@ -171,9 +171,7 @@
 .shared-table p {
   color: #eee5d3;
 }
-.shared-table .border-l-2 {
-  border-color: #d5a442;
-}
+
 .shared-table .table-steps {
   background: #f4dfad;
   color: var(--color-ink);
@@ -181,16 +179,7 @@
   border-top: 4px solid #d5a442;
   border-radius: 2rem 2rem 0.4rem 0.4rem;
 }
-.table-steps li > span:first-child {
-  display: grid;
-  place-items: center;
-  width: 2rem;
-  height: 2rem;
-  padding: 0;
-  background: var(--color-clay);
-  color: white;
-  border-radius: 50%;
-}
+
 #menu h2,
 #menu h3 {
   color: var(--color-clay);
@@ -350,9 +339,7 @@
   object-fit: contain;
   mix-blend-mode: multiply;
 }
-.table-steps li > span:first-of-type {
-  display: none;
-}
+
 @media (max-width: 39.999rem) {
   .dish-row {
     gap: 0.8rem;
